@@ -6,4 +6,26 @@
 
 #greeting-container {
   margin-top: 20px;
+  margin-left: 20px;
+}
+
+#header-color {
+    background-color:rgb(169, 207, 218);
+    color: white;
+    padding: 40px;
+    margin: 0px;
+    font-size: 50px;
+}
+
+#intro-container {
+    margin: 20x;
+    height: max-content;
+    font-size: 20px;
+}
+
+#button-format {
+    background-color: white;
+    border-color: black;
+    border-width: .5px;
+    margin: 20px;
 }
