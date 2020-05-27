@@ -1,31 +1,47 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-}
-
 #greeting-container {
   margin-top: 20px;
   margin-left: 20px;
 }
 
-#header-color {
+#pic {
+    background-color: brown;
+    max-height: 400px;
+    padding: 160px;
+    float: left;
+}
+html, body {
+    margin: 0%;
+    padding: 0%;
+}
+.heading {
     background-color:rgb(169, 207, 218);
     color: white;
-    padding: 40px;
-    margin: 0px;
-    font-size: 50px;
+    position: relative;
+    margin: 0;
+    padding: 4px;
+    font-size: 15px;
+    text-align: center;
 }
 
-#intro-container {
-    margin: 20x;
-    height: max-content;
-    font-size: 20px;
-}
-
-#button-format {
+.button {
     background-color: white;
     border-color: black;
-    border-width: .5px;
-    margin: 20px;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-left-radius: 5px;
+    border-width: 1px;
+    width: 120px;
+    height: 25px;
+    margin-top: 10px;
+    text-align: center;
+}
+.menu {
+    float: right;
+    margin: 0%;
+    padding: 0% 10px 0% 0%;
+}
+
+.bio {
+    margin: 0px;
+    padding: 250px;
 }

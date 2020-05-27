@@ -7,16 +7,28 @@
     <script src="script.js"></script>
   </head>
   <body>
-      <h1 id="header-color">Xavier I. Luna Cabrera</h1>
-  </body>
-  <body>
-    <div>
-      <img src="images/Profilepic.png" width="250" height="325" ALIGN="left" margin="20">
-      <p id="intro-container">Hello i'm Xavier Luna! I attend the illustrious North Carolina Agricultural and Teachniqal State University! (or A&T for short).
-         Im an enthusiast for Virtual Reality Technology</p>
-      <p>Click here for a random fun fact about me:</p>
-      <button id="button-format" onclick="addRandomGreeting()">Click me!</button>
-      <div id="greeting-container"></div>
-    </div>
+      <div class="heading">
+        <h1>Welcome!!</h1>
+      </div>
+
+      <div style="overflow:auto">
+          <div class="menu">
+              <div class="button">Home</div>
+              <div class="button">Projects</div>
+              <div class="button">Acomplishments</div>
+              <div class="button" onclick="https://www.linkedin.com/in/xavier-luna-cabrera-4b1406173">Linkedin</div>
+              <div class="button" onclick="addRandomGreeting()">Fun Fact</div>
+          </div>
+
+          <div id="pic">
+              <img src="images/Profilepic.png" width="250" height="325">
+          </div>
+
+          <div class="bio">
+          <p>Hello i'm Xavier Luna Cabrera! I attend the illustrious North Carolina Agricultural and Teachniqal State
+              University! (or A&T for short). Im an enthusiast for Virtual Reality Technology.</p>
+          <div id="greeting-container"></div>
+          </div>
+      </div>
   </body>
 </html>
