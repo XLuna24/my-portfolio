@@ -16,7 +16,6 @@ html, body {
     margin: 17% 0;
     padding: 25px;
     width: 55%;
-    float: left;
     font-family:'Lucida Sans';
 }
 .btn {
@@ -47,7 +46,25 @@ html, body {
 #pic {
     background-color: rgb(2, 41, 78);
     padding: 12%;
+    float:left;
+}
+
+#kalix-pic {
+    background-color: rgb(214, 114, 0);
+    padding: 12%;
+    float: right;
+}
+
+#azul-pic {
+    background-color: black;
+    padding: 12%;
     float: left;
+}
+
+#grey-pic {
+    background-color: grey;
+    padding: 12%;
+    float: right;
 }
 #name {
     color: whitesmoke;
