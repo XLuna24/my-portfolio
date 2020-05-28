@@ -2,17 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
+      <div class="heading">
+        <h1 id="name">Xavier I. Luna Cabrera</h1>
+        <a class="btn" onclick="addRandomGreeting()">Fun Fact</a>
+        <a class="btn" href="https://www.linkedin.com/in/xavier-luna-cabrera-4b1406173">Linkedin</a>
+        <a class="btn">Accomplishments</a>
+        <a class="btn">Projects</a>
+        <a class="btn">Home</a>
+      </div>
+
+      <div style="overflow:auto">
+
+          <div id="pic">
+              <img src="images/Profilepic.png" width="250" height="325" ALIGN="center">
+          </div>
+
+          <div class="bio">
+          <p>Xavier Luna is a rising junior at North Carolina Agricultural and Technical State University(NC A&T).
+              Was the mentor for the Southern Guilford High school Robotics team during the 2019-2020 school year.
+              Has created projects dealing with motion tracking (most which failed) but will persist on his latest
+              project and will get a working prototype by the end of 2020.</p>
+          <div id="greeting-container"></div>
+          </div>
+      </div>
   </body>
 </html>
