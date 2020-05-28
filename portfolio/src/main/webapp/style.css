@@ -1,47 +1,58 @@
+html, body {
+    margin: 0%;
+    padding: 0%;
+}
+
+.heading {
+    background-color:rgb(44, 38, 36);
+    position: relative;
+    margin: 0px;
+    height: 40px;
+    padding: 8px;
+    overflow: auto;
+}
+
+.bio {
+    margin: 17% 0;
+    padding: 25px;
+    width: 55%;
+    float: left;
+    font-family:'Lucida Sans';
+}
+.btn {
+    border-left-style: solid;
+    border-color: whitesmoke;
+    border-width: 1px;
+    position: relative;
+    margin-top: 5px;
+    padding: 4px 8px;
+    text-align: center;
+    color: whitesmoke;
+    float: right;
+}
+
+.menu {
+    float: right;
+    height: 100%;
+    border-left-style: solid;
+    margin: 0%;
+    padding: 0% 10px 0% 0%;
+}
+
 #greeting-container {
   margin-top: 20px;
   margin-left: 20px;
 }
 
 #pic {
-    background-color: brown;
-    max-height: 400px;
-    padding: 160px;
+    background-color: rgb(2, 41, 78);
+    padding: 12%;
     float: left;
 }
-html, body {
-    margin: 0%;
-    padding: 0%;
-}
-.heading {
-    background-color:rgb(169, 207, 218);
-    color: white;
-    position: relative;
+#name {
+    color: whitesmoke;
     margin: 0;
-    padding: 4px;
-    font-size: 15px;
-    text-align: center;
-}
-
-.button {
-    background-color: white;
-    border-color: black;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-bottom-left-radius: 5px;
-    border-width: 1px;
-    width: 120px;
-    height: 25px;
-    margin-top: 10px;
-    text-align: center;
-}
-.menu {
-    float: right;
-    margin: 0%;
-    padding: 0% 10px 0% 0%;
-}
-
-.bio {
-    margin: 0px;
-    padding: 250px;
+    padding: 0;
+    font-size: 30px;
+    float:left;
 }
