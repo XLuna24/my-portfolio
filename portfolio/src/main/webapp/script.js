@@ -28,4 +28,23 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+
+
+}
+
+var i = 0;
+var kImage = ['images/k-color-draw.jpg', 'images/k-side-draw.jpg', 'images/k-face.jpg',
+    'images/k-hollow-body.jpg', 'images/k-clothed-dody.jpg', 'images/k-final-kat.jpg'];
+
+function photoCycle() {
+    const x = document.getElementById('k-slide');
+    x.src = kImage[i];
+
+    if(i < kImage.length-1){
+        i++;
+    } else {
+        i=0;
+    }
+
+    setTimeout("photoCycle", 3000);
 }
