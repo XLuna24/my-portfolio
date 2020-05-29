@@ -8,6 +8,10 @@ a:hover {
     background: whitesmoke;
 }
 
+a:link, a:visited {
+    text-decoration: none;
+}
+
 .heading {
     background-color:rgb(44, 38, 36);
     position: relative;
