@@ -3,6 +3,11 @@ html, body {
     padding: 0%;
 }
 
+a:hover {
+    color: rgb(44, 38, 36);
+    background: whitesmoke;
+}
+
 .heading {
     background-color:rgb(44, 38, 36);
     position: relative;
