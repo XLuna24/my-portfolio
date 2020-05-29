@@ -33,12 +33,12 @@ function addRandomGreeting() {
 }
 
 var i = 0;
-var time = 3000;
 var kImage = ['images/k-color-draw.jpg', 'images/k-side-draw.jpg', 'images/k-face.jpg',
-    'images/k-hollow-body.jpg', 'images/k-clothed-dody.jpg', 'images/k-final-kat.jpg']
+    'images/k-hollow-body.jpg', 'images/k-clothed-dody.jpg', 'images/k-final-kat.jpg'];
 
 function photoCycle() {
-    document.getElementById('k-slide').src = kImage[i];
+    const x = document.getElementById('k-slide');
+    x.src = kImage[i];
 
     if(i < kImage.length-1){
         i++;
@@ -46,5 +46,5 @@ function photoCycle() {
         i=0;
     }
 
-    setTimeout("photoCycle", time);
+    setTimeout("photoCycle", 3000);
 }

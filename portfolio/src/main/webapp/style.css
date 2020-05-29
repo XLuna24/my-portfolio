@@ -26,6 +26,7 @@ a:link, a:visited {
     padding: 25px;
     width: 55%;
     font-family:'Lucida Sans';
+    overflow: auto;
 }
 .btn {
     border-left-style: solid;
