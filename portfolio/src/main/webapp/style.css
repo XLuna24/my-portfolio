@@ -12,6 +12,16 @@ a:link, a:visited {
     text-decoration: none;
 }
 
+img {
+  position: relative;
+  width: 250px;
+  height: 325px;
+  top: 50%;
+  left: 50%;
+  margin-top: -162.5px;
+  margin-left: -125px;
+}
+
 .heading {
     background-color:rgb(44, 38, 36);
     position: relative;
@@ -21,10 +31,17 @@ a:link, a:visited {
     overflow: auto;
 }
 
+.bio-box {
+    margin: 0;
+    width: 100%;
+    height: 600px;
+    overflow: auto
+}
 .bio {
-    margin: 17% 0;
+    margin: auto;
     padding: 25px;
     width: 55%;
+    height: 100%;
     font-family:'Lucida Sans';
     overflow: auto;
 }
@@ -40,12 +57,29 @@ a:link, a:visited {
     float: right;
 }
 
-.menu {
-    float: right;
+.blog {
+    margin: 25px 15%;
+    height: 75px;
+    background: whitesmoke;
+    border-radius: 3px;
+    overflow: auto;
+}
+.blog-title {
+    margin: 0;
+    width:20%;
     height: 100%;
-    border-left-style: solid;
-    margin: 0%;
-    padding: 0% 10px 0% 0%;
+    background: rgb(0, 31, 71);
+    color: whitesmoke;
+    font-size: 25px;
+    text-align: center;
+    float: left;
+}
+.blog-text {
+    margin: 0;
+    width: 75%;
+    padding: 5px;
+    font-size: 15px;
+    float: left;
 }
 
 #greeting-container {
@@ -55,26 +89,30 @@ a:link, a:visited {
 
 #pic {
     background-color: rgb(2, 41, 78);
-    padding: 12%;
+    width: 40%;
+    height: 100%;
     float:left;
 }
 
 #kalix-pic {
     background-color: rgb(214, 114, 0);
-    padding: 12%;
-    float: right;
+    width: 40%;
+    height: 100%;
+    float:right;
 }
 
 #azul-pic {
     background-color: black;
-    padding: 12%;
-    float: left;
+    width: 40%;
+    height: 100%;
+    float:left;
 }
 
 #grey-pic {
     background-color: grey;
-    padding: 12%;
-    float: right;
+    width: 40%;
+    height: 100%;
+    float:right;
 }
 #name {
     color: whitesmoke;
