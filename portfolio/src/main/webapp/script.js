@@ -12,24 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['I was originally going to be an Electrical Engineer but CS is much more fun!!!',
-      'Got 2 dogs, A Chihuahua and a Shih Tzu name Clyde and Coco',
-      'Was able to win my first hackathon with my amazing team!!!',
-      'Would rather build a 1,000 piece puzzle and hang it on my wall then buy a poster'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
-
-
+function getFact() {
+    fetch('/data').then(response => response.text()).then((quote) => {
+        document.getElementById('greeting-container').innerText = quote;
+    });
 }
 
 var i = 0;
