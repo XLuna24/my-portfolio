@@ -28,8 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
     private List<String> fact;
     
-    @Override
-    public void init() {
+    public DataServlet() {
         fact = new ArrayList<>();
         fact.add("I was originally going to be an Electrical Engineer but CS is much more fun!!!");
         fact.add("Got 2 dogs, A Chihuahua and a Shih Tzu name Clyde and Coco");
