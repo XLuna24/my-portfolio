@@ -17,6 +17,7 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
@@ -36,12 +37,15 @@ public class DataServlet extends HttpServlet {
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       Query query = new Query("Task").addSort("comment", SortDirection.DESCENDING);
+      int numEntries = getUserChoice(request);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-      PreparedQuery results = datastore.prepare(query);
+      PreparedQuery prep = datastore.prepare(query);
+      
       
       List<String> comment = new ArrayList<>();
-      for (Entity entity : results.asIterable()) {
+
+      for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(2))) {
           String comments = (String) entity.getProperty("comment");
 
           comment.add(comments);
@@ -71,5 +75,15 @@ public class DataServlet extends HttpServlet {
       return defaultValue;
     }
     return value;
+  }
+
+  private int getUserChoice(HttpServletRequest request) {
+      if(request.getParameter("num-comments") == null) {
+          return 1;
+      }
+      String numEntries = request.getParameter("num-comments");
+
+      int num = Integer.parseInt(numEntries);
+      return num;
   }
 }
