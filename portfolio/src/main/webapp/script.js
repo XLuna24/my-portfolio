@@ -13,10 +13,18 @@
 // limitations under the License.
 
 
-function getFact() {
-    fetch('/data').then(response => response.text()).then((quote) => {
-        document.getElementById('greeting-container').innerText = quote;
+function getComments() {
+    fetch('/data').then(response => response.json()).then((comment) => {
+        const commentList = document.getElementById('greeting-container');
+        commentList.innerHTML = '';
+        commentList.appendChild(createListElement(comment));
     });
+}
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
 
 var i = 0;
