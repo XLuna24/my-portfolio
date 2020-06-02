@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
     private List<String> comment = new ArrayList<>();
-    
+
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String json = convertToJson(comment);
