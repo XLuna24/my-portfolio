@@ -25,16 +25,13 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private List<String> fact;
-    
-    @Override
-    public void init() {
-        fact = new ArrayList<>();
-        fact.add("I was originally going to be an Electrical Engineer but CS is much more fun!!!");
-        fact.add("Got 2 dogs, A Chihuahua and a Shih Tzu name Clyde and Coco");
-        fact.add("Was able to win my first hackathon with my amazing team!!!");
-        fact.add("Would rather build a 1,000 piece puzzle and hang it on my wall then buy a poster");
-    }
+    final static List<String> fact = new ArrayList<String>() {{
+        add("I was originally going to be an Electrical Engineer but CS is much more fun!!!");
+        add("Got 2 dogs, A Chihuahua and a Shih Tzu name Clyde and Coco");
+        add("Was able to win my first hackathon with my amazing team!!!");
+        add("Would rather build a 1,000 piece puzzle and hang it on my wall then buy a poster");
+    }};
+
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String facts = fact.get((int) (Math.random()*fact.size()));
