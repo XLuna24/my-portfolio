@@ -36,7 +36,6 @@ public class DataServlet extends HttpServlet {
         fact.add("Would rather build a 1,000 piece puzzle and hang it on my wall then buy a poster");
     }
 
-
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String json = convertToJson(fact);
