@@ -33,19 +33,18 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+    private int numEntries = 3;
     
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       Query query = new Query("Task").addSort("comment", SortDirection.DESCENDING);
-      int numEntries = getUserChoice(request);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       PreparedQuery prep = datastore.prepare(query);
       
-      
       List<String> comment = new ArrayList<>();
 
-      for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(2))) {
+      for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(numEntries))) {
           String comments = (String) entity.getProperty("comment");
 
           comment.add(comments);
@@ -59,6 +58,7 @@ public class DataServlet extends HttpServlet {
     @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String text = getParameter(request, "text-input", "");
+        numEntries = Integer.parseInt(getParameter(request, "num-comments", "1"));
 
         Entity posts = new Entity("Task");
         posts.setProperty("comment", text);
@@ -75,15 +75,5 @@ public class DataServlet extends HttpServlet {
       return defaultValue;
     }
     return value;
-  }
-
-  private int getUserChoice(HttpServletRequest request) {
-      if(request.getParameter("num-comments") == null) {
-          return 1;
-      }
-      String numEntries = request.getParameter("num-comments");
-
-      int num = Integer.parseInt(numEntries);
-      return num;
   }
 }
