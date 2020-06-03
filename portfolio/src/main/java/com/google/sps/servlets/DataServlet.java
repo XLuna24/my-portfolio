@@ -26,27 +26,33 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private List<String> fact;
-    
-    public DataServlet() {
-        fact = new ArrayList<>();
-        fact.add("I was originally going to be an Electrical Engineer but CS is much more fun!!!");
-        fact.add("Got 2 dogs, A Chihuahua and a Shih Tzu name Clyde and Coco");
-        fact.add("Was able to win my first hackathon with my amazing team!!!");
-        fact.add("Would rather build a 1,000 piece puzzle and hang it on my wall then buy a poster");
-    }
+    private List<String> comment = new ArrayList<>();
 
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String json = convertToJson(fact);
-      
+      String json = convertToJson(comment);
+
       response.setContentType("text/html;");
       response.getWriter().println(json);
   }
+    @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String text = getParameter(request, "text-input", "");
+        comment.add(text);
+        response.sendRedirect("/blog.html");
+    }
 
-  private String convertToJson(List<String> facts) {
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
+
+  private String convertToJson(List<String> comments) {
       Gson gson = new Gson();
-      String json = gson.toJson(facts);
+      String json = gson.toJson(comments);
       return json;
   }
 }
