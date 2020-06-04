@@ -21,6 +21,11 @@ function getComments() {
     });
 }
 
+function deleteComments() {
+    fetch('delete-data', {method: 'POST'});
+    getComments();
+}
+
 function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
