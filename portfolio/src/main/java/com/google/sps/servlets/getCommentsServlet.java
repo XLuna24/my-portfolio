@@ -36,8 +36,8 @@ public class getCommentsServlet extends HttpServlet {
           long id = entity.getKey().getId();
           long timestamp = (long) entity.getProperty("timestamp");
 
-          Comment posts = new Comment(id, name, comment, timestamp);
-          comments.add(posts);
+          Comment post = new Comment(id, name, comment, timestamp);
+          comments.add(post);
         }
 
       Gson gson = new Gson();
