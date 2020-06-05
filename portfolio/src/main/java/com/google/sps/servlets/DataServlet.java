@@ -22,7 +22,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
-import com.google.sps.data.Comments;
+import com.google.sps.data.Comment;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private int numEntries = 3;
+    private int numEntries = 5;
     
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -43,14 +43,14 @@ public class DataServlet extends HttpServlet {
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       PreparedQuery prep = datastore.prepare(query);
       
-      List<Comments> comments = new ArrayList<>();
+      List<Comment> comments = new ArrayList<>();
       for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(numEntries))) {
           String name = (String) entity.getProperty("name");
           String comment = (String) entity.getProperty("comment");
           long id = entity.getKey().getId();
           long timestamp = (long) entity.getProperty("timestamp");
 
-          Comments posts = new Comments(id, name, comment, timestamp);
+          Comment posts = new Comment(id, name, comment, timestamp);
           comments.add(posts);
         }
 
@@ -65,15 +65,15 @@ public class DataServlet extends HttpServlet {
         String comment = getParameter(request, "text-input", "");
         long timestamp = System.currentTimeMillis();
 
-        numEntries = Integer.parseInt(getParameter(request, "num-comments", "3"));
+        numEntries = Integer.parseInt(getParameter(request, "num-comments", "5"));
 
-        Entity posts = new Entity("Task");
-        posts.setProperty("name", name);
-        posts.setProperty("comment", comment);
-        posts.setProperty("timestamp", timestamp);
+        Entity post = new Entity("Task");
+        post.setProperty("name", name);
+        post.setProperty("comment", comment);
+        post.setProperty("timestamp", timestamp);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        datastore.put(posts);
+        datastore.put(post);
 
         response.sendRedirect("/blog.html");
     }
