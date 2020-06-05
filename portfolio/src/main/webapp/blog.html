@@ -24,7 +24,7 @@
           </p>
       </div>
 
-      <form name="entries" action='/data' method="POST">
+      <form name="entries" action='/data' method="POST" class="comnt-section">
         <label>Display number of comments </label>
           <select name="num-comments" onchange="javascript:document.entries.submit();">
             <option value="0">none</option>
@@ -36,12 +36,17 @@
           <button onclick="deleteComments()">Delete all comments</button>
         <br/><br/>
 
-      <div id="greeting-container"></div>
+      <ul id="comnt-list"></ul>
         <p>Enter a comment!!</p>
-        <textarea name="text-input"></textarea>
-        <br/><br/>
-
-        <input type="submit" />
+        <p1>Name:</p1>
+        <br/>
+        <textarea name="u-name" class="comnt-name"></textarea>
+        <br/>
+        <p1>Comment:</p1>
+        <br>
+        <textarea name="text-input" class="comnt-txt"></textarea>
+        <br/>
+        <button onclick="javascript:document.entries.submit();">Post</button>
       </form>
   </body>
 </html>

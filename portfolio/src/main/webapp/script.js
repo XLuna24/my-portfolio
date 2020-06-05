@@ -15,9 +15,10 @@
 
 function getComments() {
     fetch('/data').then(response => response.json()).then((comment) => {
-        const commentList = document.getElementById('greeting-container');
-        commentList.innerHTML = '';
-        commentList.appendChild(createListElement(comment));
+        const commentList = document.getElementById('comnt-list');
+        comment.forEach((comments) => {
+            commentList.appendChild(createListElement(comments));
+        })
     });
 }
 
@@ -26,10 +27,19 @@ function deleteComments() {
     getComments();
 }
 
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+function createListElement(comnt) {
+  const commentBox = document.createElement('li');
+  commentBox.className = 'comment-box';
+
+  const uName = document.createElement('li');
+  uName.innerText = comnt.name + ' :';
+  
+  const data = document.createElement('span');
+  data.innerText = comnt.comment;
+
+  commentBox.appendChild(uName);
+  commentBox.appendChild(data);
+  return commentBox;
 }
 
 var i = 0;

@@ -8,7 +8,7 @@ public final class Comments {
 
     public Comments(long id, String name, String comment, long timestamp) {
         this.id = id;
-        this.name = naem;
+        this.name = name;
         this.comment = comment;
         this.timestamp = timestamp;
     }

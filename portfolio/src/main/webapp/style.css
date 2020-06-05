@@ -82,6 +82,35 @@ img {
     float: left;
 }
 
+.comnt-section {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: rgb(44, 38, 36);
+    color: whitesmoke;
+    text-align: center
+}
+.comment-box {
+    margin: 25px 15%;
+    height: 75px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    color: black;
+    overflow: auto;
+    text-align: left;
+}
+.comnt-name {
+    height: 17px;
+    width: 175px;
+    background-color: whitesmoke;
+}
+.comnt-txt {
+    width: 75%;
+    padding: 5px;
+    height: 75px;
+    background-color: whitesmoke;
+}
+
 #greeting-container {
   margin-top: 20px;
   margin-left: 20px;

@@ -22,6 +22,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
+import com.google.sps.data.Comments;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,31 +38,39 @@ public class DataServlet extends HttpServlet {
     
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      Query query = new Query("Task").addSort("comment", SortDirection.DESCENDING);
+      Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       PreparedQuery prep = datastore.prepare(query);
       
-      List<String> comment = new ArrayList<>();
-
+      List<Comments> comments = new ArrayList<>();
       for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(numEntries))) {
-          String comments = (String) entity.getProperty("comment");
+          String name = (String) entity.getProperty("name");
+          String comment = (String) entity.getProperty("comment");
+          long id = entity.getKey().getId();
+          long timestamp = (long) entity.getProperty("timestamp");
 
-          comment.add(comments);
+          Comments posts = new Comments(id, name, comment, timestamp);
+          comments.add(posts);
         }
 
       Gson gson = new Gson();
 
       response.setContentType("application/json;");
-      response.getWriter().println(gson.toJson(comment));
+      response.getWriter().println(gson.toJson(comments));
   }
     @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String text = getParameter(request, "text-input", "");
-        numEntries = Integer.parseInt(getParameter(request, "num-comments", "1"));
+        String name = getParameter(request,"u-name","");
+        String comment = getParameter(request, "text-input", "");
+        long timestamp = System.currentTimeMillis();
+
+        numEntries = Integer.parseInt(getParameter(request, "num-comments", "3"));
 
         Entity posts = new Entity("Task");
-        posts.setProperty("comment", text);
+        posts.setProperty("name", name);
+        posts.setProperty("comment", comment);
+        posts.setProperty("timestamp", timestamp);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         datastore.put(posts);
