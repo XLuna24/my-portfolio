@@ -24,32 +24,41 @@
           </p>
       </div>
 
-      <div class="comnt-section">
+      <div class="comnt-post">
       <form name="display" action="/get-comments" method="POST">
-        <label>Display number of comments </label>
-          <select name="num-comments" onchange="javascript:document.display.submit();">
+        <label>Display number of comments</label>
+          <select name="num-comments" id="comnt-btn" onchange="javascript:document.display.submit();">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="50">50</option>
           </select>
-          <button onclick="deleteComments()">Delete all comments</button>
-        <br/><br/>
+          <label>Sort by</label>
+          <select name="sort" id="comnt-btn" onchange="javascript:document.display.submit();">
+              <option value="new">new</option>
+              <option value="old">old</option>
+          </select>
+          <label>comments</label>    
+          <button onclick="deleteComments()" id="comnt-btn">Delete all comments</button>
+          <br/>
+          <ul id="comnt-list"></ul>
       </form>
+      </div>
       
-      <form name ="entries" action='/data' method="POST">
-      <ul id="comnt-list"></ul>
-        <p>Enter a comment!!</p>
-        <p1>Name:</p1>
-        <br/>
-        <textarea name="u-name" class="comnt-name"></textarea>
-        <br/>
-        <p1>Comment:</p1>
-        <br>
-        <textarea name="text-input" class="comnt-txt"></textarea>
-        <br/>
-        <button onclick="javascript:document.entries.submit();">Post</button>
-      </form>
+      
+      <div class="comnt-section">
+          <form name ="entries" class="comnt-forum" action='/data' method="POST">
+              <p>Leave a Comment-</p>
+              <p1>Name:</p1>
+              <br/>
+              <textarea name="u-name" class="comnt-name"></textarea>
+              <br/>
+              <p1>Comment:</p1>
+              <br>
+              <textarea name="text-input" class="comnt-txt"></textarea>
+              <br/>
+              <button onclick="javascript:document.entries.submit();" id="comnt-btn">Post</button>
+          </form>
       </div>
   </body>
 </html>

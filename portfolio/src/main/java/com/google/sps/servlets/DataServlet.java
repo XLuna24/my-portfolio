@@ -34,38 +34,12 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private int numEntries = 5;
-    
-    @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
 
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-      PreparedQuery prep = datastore.prepare(query);
-      
-      List<Comment> comments = new ArrayList<>();
-      for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(numEntries))) {
-          String name = (String) entity.getProperty("name");
-          String comment = (String) entity.getProperty("comment");
-          long id = entity.getKey().getId();
-          long timestamp = (long) entity.getProperty("timestamp");
-
-          Comment post = new Comment(id, name, comment, timestamp);
-          comments.add(post);
-        }
-
-      Gson gson = new Gson();
-
-      response.setContentType("application/json;");
-      response.getWriter().println(gson.toJson(comments));
-  }
     @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = getParameter(request,"u-name","");
         String comment = getParameter(request, "text-input", "");
         long timestamp = System.currentTimeMillis();
-
-        numEntries = Integer.parseInt(getParameter(request, "num-comments", "5"));
 
         Entity post = new Entity("Task");
         post.setProperty("name", name);

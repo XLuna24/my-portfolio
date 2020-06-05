@@ -18,8 +18,7 @@ img {
   height: 325px;
   top: 50%;
   left: 50%;
-  margin-top: -162.5px;
-  margin-left: -125px;
+  transform: translate(-50%, -50%);
 }
 
 .heading {
@@ -32,18 +31,23 @@ img {
 }
 
 .bio-box {
-    margin: 0;
+    margin: 0px;
+    padding: 0px;
     width: 100%;
-    height: 600px;
-    overflow: auto
+    height: 700px;
+    position: relative;
+    overflow: visible;
 }
 .bio {
     margin: auto;
-    padding: 25px;
+    position: relative;
+    padding: 0px 25px;
     width: 55%;
     height: 100%;
     font-family:'Lucida Sans';
-    overflow: auto;
+}
+.bio-text {
+    margin: 300px 0;
 }
 .btn {
     border-left-style: solid;
@@ -66,6 +70,7 @@ img {
 }
 .blog-title {
     margin: 0;
+    padding: 20px 0px;
     width:20%;
     height: 100%;
     background: rgb(0, 31, 71);
@@ -77,37 +82,70 @@ img {
 .blog-text {
     margin: 0;
     width: 75%;
-    padding: 5px;
+    padding: 20px 5px;
     font-size: 15px;
     float: left;
 }
 
 .comnt-section {
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
-    background-color: rgb(44, 38, 36);
-    color: whitesmoke;
-    text-align: center
+    background-color: rgba(44, 38, 36, 0.856);
 }
-.comment-box {
-    margin: 25px 15%;
-    background-color: whitesmoke;
-    border-radius: 3px;
-    color: black;
-    overflow: auto;
+.comnt-forum {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: whitesmoke;
     text-align: left;
 }
 .comnt-name {
     height: 17px;
     width: 175px;
     background-color: whitesmoke;
+    align-self: left;
 }
 .comnt-txt {
-    width: 75%;
+    width: 100%;
     padding: 5px;
-    height: 75px;
+    height: 100px;
     background-color: whitesmoke;
+}
+#comnt-btn {
+    margin: 0px 4px;
+    background: rgb(25, 117, 110);
+    color: whitesmoke;
+    border-style: none;
+    border-radius: 3px;
+    align-content: right;
+}
+
+.comnt-post {
+    margin: 0px 15%;
+    padding: 0px;
+    overflow: auto;
+}
+.comment-box {
+    margin: 25px 0px;
+    padding: 0px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    color: black;
+    overflow: auto;
+    text-align: left;
+    font-size: 15px;
+}
+.comnt-post-title {
+    background-color:rgb(25, 117, 110);
+    color: whitesmoke;
+    position: relative;
+    margin: 0px 0px;
+    height: 17px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 #greeting-container {
@@ -130,6 +168,7 @@ img {
 }
 
 #azul-pic {
+    position: relative;
     background-color: black;
     width: 40%;
     height: 100%;
