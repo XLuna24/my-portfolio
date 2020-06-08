@@ -32,6 +32,7 @@ function createListElement(comnt) {
   commentBox.className = 'comment-box';
 
   const uName = document.createElement('li');
+  uName.className = 'comnt-post-title'
   uName.innerText = comnt.name + ' :';
   
   const data = document.createElement('span');

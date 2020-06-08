@@ -21,10 +21,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/get-comments")
 public class getCommentsServlet extends HttpServlet {
     private int numEntries = 5;
+    private SortDirection direct = SortDirection.DESCENDING;
     
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
+      Query query = new Query("Task").addSort("timestamp", direct);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       PreparedQuery prep = datastore.prepare(query);
@@ -48,7 +49,14 @@ public class getCommentsServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      String direction = request.getParameter("sort");
+      if(direction.equals("old")) {
+          direct = SortDirection.ASCENDING;
+      } else {
+          direct = SortDirection.DESCENDING;
+      }
       numEntries = Integer.parseInt(request.getParameter("num-comments"));
+      
       response.sendRedirect("/blog.html");
   }
 }
