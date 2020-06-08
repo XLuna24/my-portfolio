@@ -23,9 +23,8 @@ img {
 
 #map {
   border: thin solid black;
-  margin: 70px;
-  height: 400px;
-  width: 750px;
+  width: 40%;
+  height: 100%;
   float: right;
 }
 
