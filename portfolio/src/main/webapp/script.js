@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
 function getComments() {
     fetch('/get-comments').then(response => response.json()).then((comment) => {
@@ -41,6 +43,27 @@ function createListElement(comnt) {
   commentBox.appendChild(uName);
   commentBox.appendChild(data);
   return commentBox;
+}
+
+function drawChart() {
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Headset');
+    data.addColumn('number', 'Count');
+    data.addRows([
+        ['Index', 15],
+        ['Oculus', 10],
+        ['WMR', 5]
+    ]);
+
+    const options = {
+        'title': 'Vr Headsets',
+        'width':500,
+        'height':400
+    };
+
+    const chart = new google.visualization.PieChart(
+      document.getElementById('vr-chart'));
+    chart.draw(data, options);
 }
 
 var map;
