@@ -21,6 +21,13 @@ img {
   transform: translate(-50%, -50%);
 }
 
+#map {
+  border: thin solid black;
+  width: 40%;
+  height: 100%;
+  float: right;
+}
+
 .heading {
     background-color:rgb(44, 38, 36);
     position: relative;
