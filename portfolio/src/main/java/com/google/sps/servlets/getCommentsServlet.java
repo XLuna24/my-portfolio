@@ -7,6 +7,9 @@ import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
 import java.io.IOException;
@@ -21,18 +24,21 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/get-comments")
 public class getCommentsServlet extends HttpServlet {
     private int numEntries = 5;
+    private String lanCode = "en";
     private SortDirection direct = SortDirection.DESCENDING;
     
     @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       Query query = new Query("Task").addSort("timestamp", direct);
+      Translate translate = TranslateOptions.getDefaultInstance().getService();
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       PreparedQuery prep = datastore.prepare(query);
       
       List<Comment> comments = new ArrayList<>();
       for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(numEntries))) {
-          String name = (String) entity.getProperty("name");
+          Translation translation = translate.translate((String) entity.getProperty("name"), Translate.TranslateOptions.targetLanguage(lanCode));
+          String name = translation.getTranslatedText();
           String comment = (String) entity.getProperty("comment");
           long id = entity.getKey().getId();
           long timestamp = (long) entity.getProperty("timestamp");
@@ -55,6 +61,8 @@ public class getCommentsServlet extends HttpServlet {
       } else {
           direct = SortDirection.DESCENDING;
       }
+
+      lanCode = request.getParameter("language");
       numEntries = Integer.parseInt(request.getParameter("num-comments"));
       
       response.sendRedirect("/blog.html");
