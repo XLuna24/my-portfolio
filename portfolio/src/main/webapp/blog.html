@@ -26,7 +26,7 @@
 
       <div class="comnt-post">
       <form name="display" action="/get-comments" method="POST">
-          <select name="language" id="comnt-btn" onchange="">
+          <select name="language" id="comnt-btn" onchange="javascript:document.display.submit();">
               <option value="en">English</option>
               <option value="es">Spanish</option>
               <option value="zh">Chinese</option>
@@ -46,7 +46,7 @@
               <option value="old">old</option>
           </select>
           <label>comments</label>
-          <button onclick="deleteComments()" id="comnt-btn">Delete all comments</button>
+          <button onclick="deleteComments()" id="comnt-btn" >Delete all comments</button>
           <br/>
           <ul id="comnt-list"></ul>
       </form>

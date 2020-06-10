@@ -37,9 +37,9 @@ public class getCommentsServlet extends HttpServlet {
       
       List<Comment> comments = new ArrayList<>();
       for (Entity entity : prep.asIterable(FetchOptions.Builder.withLimit(numEntries))) {
-          Translation translation = translate.translate((String) entity.getProperty("name"), Translate.TranslateOptions.targetLanguage(lanCode));
-          String name = translation.getTranslatedText();
-          String comment = (String) entity.getProperty("comment");
+          Translation translation = translate.translate((String) entity.getProperty("comment"), Translate.TranslateOption.targetLanguage(lanCode));
+          String name = (String) entity.getProperty("name");
+          String comment = translation.getTranslatedText();
           long id = entity.getKey().getId();
           long timestamp = (long) entity.getProperty("timestamp");
 
