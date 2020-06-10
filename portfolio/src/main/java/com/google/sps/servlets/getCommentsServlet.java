@@ -50,6 +50,7 @@ public class getCommentsServlet extends HttpServlet {
       Gson gson = new Gson();
 
       response.setContentType("application/json;");
+      response.setCharacterEncoding("UTF-8");
       response.getWriter().println(gson.toJson(comments));
   }
 
